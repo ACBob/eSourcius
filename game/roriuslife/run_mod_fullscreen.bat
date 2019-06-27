@@ -1,1 +1,1 @@
-@"../swarm.exe" -fullscreen -override_vpk -w 1600 -h 900 -game portal_template
+@"../swarm.exe" -fullscreen -override_vpk -w 1600 -h 900 -game roriuslife
