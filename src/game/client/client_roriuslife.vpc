@@ -4,6 +4,9 @@
 //	Project Script
 //-----------------------------------------------------------------------------
 
+$Macro SRCDIR		"..\.."
+$Macro GAMENAME 	"roriuslife"
+
 $Include "$SRCDIR\game\client\client_base.vpc"
 
 $Configuration
@@ -15,7 +18,7 @@ $Configuration
 	}
 }
 
-$Project "Client (Portal)"
+$Project "Client (Rorius Life)"
 {
 	$Folder	"Source Files"
 	{
