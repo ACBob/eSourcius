@@ -1,5 +1,0 @@
-SpriteCard
-{
-$basetexture "particle/softglow_translucent"
-$splinetype 2
-}

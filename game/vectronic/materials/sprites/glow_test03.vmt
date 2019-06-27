@@ -1,6 +1,0 @@
-"Sprite"
-{
-	"$spriteorientation" "vp_parallel"
-	"$spriteorigin" "[ 0.50 1.00 ]"
-	"$basetexture" "sprites/glow_test03"
-}

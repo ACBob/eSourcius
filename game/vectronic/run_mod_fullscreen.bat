@@ -1,1 +1,0 @@
-@"../swarm.exe" -fullscreen -w 2560 -h 1080 -game vectronic

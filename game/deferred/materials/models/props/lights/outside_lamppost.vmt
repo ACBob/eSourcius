@@ -1,6 +1,0 @@
-
-VertexLitGeneric
-{
-$baseTexture "models/props/lights/Outside_LampPost.vtf"
-$selfillum 1
-}

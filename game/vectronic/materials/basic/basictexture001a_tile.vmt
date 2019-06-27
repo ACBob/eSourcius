@@ -1,7 +1,0 @@
-"LightMappedGeneric"
-{
-	"$basetexture" "basic/basictexture001a_tile"	
-	"$surfaceprop" "tile"
-	"%keywords" "dev, tile"
-
-}

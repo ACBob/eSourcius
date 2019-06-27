@@ -1,6 +1,0 @@
-VertexLitGeneric
-{
-$basetexture "swarm/models/AS2MachineSkins/GeneratorSkin"
-$bumpmap "swarm\models\AS2MachineSkins\GeneratorSkin_normal"
-$surfaceprop metalpanel
-}

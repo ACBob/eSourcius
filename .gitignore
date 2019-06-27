@@ -32,6 +32,8 @@ ipch
 # shader files
 *.tmp
 
+src/.vs/
+
 hammer.vdf
 GameConfig.txt
 
