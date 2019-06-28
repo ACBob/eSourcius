@@ -1,0 +1,5 @@
+"UnlitGeneric"
+{
+	"$basetexture" "dev/dev_testchamberlight"
+	"$surfaceprop" "glass"
+}

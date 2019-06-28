@@ -1,0 +1,7 @@
+"UnlitGeneric"
+{
+	// Original shader: AddTexture
+	"$basetexture" "effects/Gridfield"
+	"$additive" 1
+	"$vertexcolor" 1
+}

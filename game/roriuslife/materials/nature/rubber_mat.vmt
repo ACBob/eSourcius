@@ -1,0 +1,32 @@
+// envmaptint_fix
+"LightmappedGeneric"
+{
+	"LightmappedGeneric_DX6"
+	{
+		"$fallbackmaterial" "nature/toxicslime002a_dx70"
+	}
+
+	"$basetexture" "Nature/rubbermat"
+	"$surfaceprop" "metal"
+	"$envmap" "env_cubemap"
+	"$envmaptint" "[ .9 .9 .9 ]"
+	"$envmapcontrast" "0.5"
+	"%keywords" "portal"
+	
+
+	
+	"$fogenable" 0
+	"$fogcolor" "{183 204 208}"
+	"$fogstart" 1.00`
+	"$fogend" 100.00
+	"Proxies"
+	{
+		"TextureScroll"
+		{
+			"texturescrollvar" "$basetexturetransform"
+			"texturescrollrate" 2.00
+			"texturescrollangle" 0.00
+		}
+	}
+}
+

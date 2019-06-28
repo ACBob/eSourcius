@@ -4,7 +4,7 @@
 	title 		"Rorius Life"
 	type		singleplayer_only
 
-        "icon"		"game"
+        "icon"		"icon"
 	type		singleplayer_only
 	nodifficulty	1
 	nodegraph 0
