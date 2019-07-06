@@ -194,6 +194,10 @@ void CHUDQuickInfo::Paint()
 	C_BaseCombatWeapon *pWeapon = pPortalPlayer->GetActiveWeapon();
 	if ( pWeapon == NULL )
 		return;
+	if (!FClassnameIs(pWeapon, "weapon_portalgun"))
+	{
+		return;
+	}
 
 	int		xCenter	= ( ScreenWidth() - m_icon_c->Width() ) / 2;
 	int		yCenter = ( ScreenHeight() - m_icon_c->Height() ) / 2;

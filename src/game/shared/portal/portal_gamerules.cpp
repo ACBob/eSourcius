@@ -27,6 +27,10 @@
 	#include "datacache/imdlcache.h"	// For precaching box model
 #endif
 
+//#ifndef CLIENT_DLL
+//	#include "../server/prop_metalbox.cpp"
+//#endif
+
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
 
@@ -95,7 +99,7 @@ void CC_Create_PortalWeightBox( void )
 	CBaseEntity::SetAllowPrecache( true );
 
 	// Try to create entity
-	CBaseEntity *entity = dynamic_cast< CBaseEntity * >( CreateEntityByName("prop_physics") );
+	CBaseEntity *entity = dynamic_cast< CBaseEntity * >( CreateEntityByName("prop_metalbox") );
 	if (entity)
 	{
 		entity->PrecacheModel( PORTAL_WEIGHT_BOX_MODEL_NAME );
@@ -125,6 +129,46 @@ void CC_Create_PortalWeightBox( void )
 static ConCommand ent_create_portal_weight_box("ent_create_portal_weight_box", CC_Create_PortalWeightBox, "Creates a weight box used in portal puzzles at the location the player is looking.", FCVAR_GAMEDLL | FCVAR_CHEAT);
 #endif // CLIENT_DLL
 
+#ifndef CLIENT_DLL
+// Create the box used for portal puzzles, named 'box'. Used for easy debugging of portal puzzles.
+void CC_Create_PortalCompanionBox(void)
+{
+	MDLCACHE_CRITICAL_SECTION();
+
+	bool allowPrecache = CBaseEntity::IsPrecacheAllowed();
+	CBaseEntity::SetAllowPrecache(true);
+
+	// Try to create entity
+	CPhysicsProp* entity = dynamic_cast<CPhysicsProp*>(CreateEntityByName("prop_metalbox"));
+	if (entity)
+	{
+		entity->PrecacheModel(PORTAL_WEIGHT_BOX_MODEL_NAME);
+		entity->SetModel(PORTAL_WEIGHT_BOX_MODEL_NAME);
+		entity->SetName(MAKE_STRING("box"));
+		entity->m_nSkin = 1;
+		entity->AddSpawnFlags(SF_PHYSPROP_ENABLE_PICKUP_OUTPUT);
+		entity->Precache();
+		DispatchSpawn(entity);
+
+		// Now attempt to drop into the world
+		CBasePlayer* pPlayer = UTIL_GetCommandClient();
+		trace_t tr;
+		Vector forward;
+		pPlayer->EyeVectors(&forward);
+		UTIL_TraceLine(pPlayer->EyePosition(),
+			pPlayer->EyePosition() + forward * MAX_TRACE_LENGTH, MASK_SOLID,
+			pPlayer, COLLISION_GROUP_NONE, &tr);
+		if (tr.fraction != 1.0)
+		{
+			tr.endpos.z += 12;
+			entity->Teleport(&tr.endpos, NULL, NULL);
+			UTIL_DropToFloor(entity, MASK_SOLID);
+		}
+	}
+	CBaseEntity::SetAllowPrecache(allowPrecache);
+}
+static ConCommand ent_create_portal_companion_box("ent_create_portal_companion_box", CC_Create_PortalCompanionBox, "Creates a companion box used in portal puzzles at the location the player is looking.", FCVAR_GAMEDLL | FCVAR_CHEAT);
+#endif // CLIENT_DLL
 
 #define PORTAL_METAL_SPHERE_MODEL_NAME "models/props/sphere.mdl"
 
@@ -1091,7 +1135,9 @@ static ConCommand ent_create_portal_metal_sphere("ent_create_portal_metal_sphere
 	float CPortalGameRules::FlPlayerFallDamage( CBasePlayer *pPlayer )
 	{
 		// No fall damage in Portal!
-		return 0.0f;
+		//return 0.0f;
+		pPlayer->m_Local.m_flFallVelocity -= PLAYER_MAX_SAFE_FALL_SPEED;
+		return pPlayer->m_Local.m_flFallVelocity * DAMAGE_FOR_FALL_SPEED;
 	}
 
 

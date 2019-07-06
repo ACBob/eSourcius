@@ -108,8 +108,11 @@ void CWeaponPortalgun::Activate()
 	if ( pPlayer )
 	{
 		CBaseEntity *pHeldObject = GetPlayerHeldEntity( pPlayer );
-		OpenProngs( ( pHeldObject ) ? ( false ) : ( true ) );
-		OpenProngs( ( pHeldObject ) ? ( true ) : ( false ) );
+		if (FClassnameIs(pPlayer->GetActiveWeapon(), "weapon_portalgun"))
+		{
+			OpenProngs( ( pHeldObject ) ? ( false ) : ( true ) );
+			OpenProngs( ( pHeldObject ) ? ( true ) : ( false ) );
+		}
 
 		if( GameRules()->IsMultiplayer() )
 			m_iPortalLinkageGroupID = pPlayer->entindex();

@@ -48,6 +48,11 @@ $Project "Server (Rorius Life)"
 		$File	"$SRCDIR\game\shared\vehicle_choreo_generic_shared.h"
 		$File	"$SRCDIR\game\shared\weapon_parse_default.cpp"
 		
+		$Folder "Rorius Life"
+		{
+			$File	"$SRCDIR\game\server\prop_metalbox.cpp"
+		}
+		
 		$Folder	"Multiplayer"
 		{
 			$File	"multiplayer\basenetworkedplayer.h"

@@ -299,6 +299,10 @@ void CPortal_Player::Precache( void )
 	PrecacheScriptSound( "PortalPlayer.Woosh" );
 	PrecacheScriptSound( "PortalPlayer.FallRecover" );
 
+	//Reep might've fixed the other, but he forgot these exist. ~ACBob
+	PrecacheScriptSound( "PortalPlayer.BonkYelp" );
+	PrecacheScriptSound( "PortalPlayer.PainYelp" );
+
 	PrecacheModel ( "sprites/glow01.vmt" );
 
 	//Precache Citizen models
@@ -1821,7 +1825,8 @@ int CPortal_Player::OnTakeDamage( const CTakeDamageInfo &inputInfo )
 	}
 	else if ( ( inputInfoCopy.GetDamageType() & DMG_SHOCK ) || ( inputInfoCopy.GetDamageType() & DMG_BURN ) )
 	{
-		EmitSound( "PortalPortal.PainYelp" );
+		//PortalPortal.PainYelp? Oh vlave with your typos. ~ACBob
+		EmitSound( "PortalPlayer.PainYelp" );
 	}
 
 	int ret = BaseClass::OnTakeDamage( inputInfoCopy );

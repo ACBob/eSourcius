@@ -26,7 +26,12 @@ $Project "Client (Rorius Life)"
 		$File	"c_team_objectiveresource.cpp"
 		$File	"c_team_objectiveresource.h"
 		$File	"$SRCDIR\game\shared\weapon_parse_default.cpp"
-
+		
+		$Folder "Rorius Life"
+		{
+			$File	"$SRCDIR\game\client\c_prop_metalbox.cpp"
+		}
+		
 		$Folder	"Multiplayer"
 		{
 			$File	"multiplayer\basenetworkedplayer_cl.h"

@@ -79,6 +79,8 @@ private:
 	virtual const char*		AIClassText(int classType);
 	virtual const char *GetGameDescription( void ) { return "Portal"; }
 
+	//virtual float FlPlayerFallDamage(CBasePlayer* pPlayer) = 0;// this client just hit the ground after a fall. How much damage?
+
 	// Ammo
 	virtual void			PlayerThink( CBasePlayer *pPlayer );
 	virtual float			GetAmmoDamage( CBaseEntity *pAttacker, CBaseEntity *pVictim, int nAmmoType );

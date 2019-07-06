@@ -17,6 +17,7 @@
 #include "portal/weapon_physcannon.h"
 #include "model_types.h"
 #include "rumble_shared.h"
+#include "particle_parse.h"
 
 // memdbgon must be the last include file in a .cpp file!!!
 #include "tier0/memdbgon.h"
@@ -185,7 +186,14 @@ void CTriggerPortalCleanser::Touch( CBaseEntity *pOther )
 						pPortalgun->SendWeaponAnim(ACT_VM_FIZZLE);
 					}
 #else
-					pPortalgun->SendWeaponAnim(ACT_VM_FIZZLE);
+					if (FClassnameIs(pPlayer->GetActiveWeapon(), "weapon_portalgun"))
+					{
+						//CBaseEntity *pHeldObject = pPlayer->GetHeldObject(); //HACK HACK! Do this until we can figure out a better way.
+						//if (FClassnameIs(pHeldObject,"prop_metalbox")) //If we're holding the box, don't do the fizzle effect, it could be anti-fizzle!
+						//{ //Idea maybe stolen from blue portals up there ^^^ but shut
+							pPortalgun->SendWeaponAnim(ACT_VM_FIZZLE); 
+						//}
+					}
 #endif
 					pPortalgun->SetLastFiredPortal( 0 );
 					m_OnFizzle.FireOutput( pOther, this );
@@ -205,7 +213,7 @@ void CTriggerPortalCleanser::Touch( CBaseEntity *pOther )
 
 		while ( g_pszPortalNonCleansable[ i ] )
 		{
-			if ( FClassnameIs( pBaseAnimating, g_pszPortalNonCleansable[ i ] ) )
+			if ( FClassnameIs( pBaseAnimating, g_pszPortalNonCleansable[ i ] ) || HasSpawnFlags(1<<16))
 			{
 				// Don't dissolve non cleansable objects
 				return;
@@ -275,6 +283,7 @@ void CTriggerPortalCleanser::Touch( CBaseEntity *pOther )
 		if ( pDisolvingAnimating ) 
 		{
 			pDisolvingAnimating->Dissolve( "", gpGlobals->curtime, false, ENTITY_DISSOLVE_NORMAL );
+			DispatchParticleEffect("Dissolve", PATTACH_POINT_FOLLOW, this);
 		}
 
 		m_OnDissolve.FireOutput( pOther, this );

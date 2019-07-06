@@ -759,16 +759,20 @@ void C_WeaponPortalgun::OnDataChanged( DataUpdateType_t updateType )
 
 		{
 			C_BaseAnimating::AutoAllowBoneAccess boneaccess( true, true );
-			StartEffects();
+			//StartEffects();
 		}
 
-		DoEffect( m_EffectState );
+		//DoEffect( m_EffectState );
 	}
 
 	// Update effect state when out of parity with the server
 	else if ( m_nOldEffectState != m_EffectState || m_bOldCanFirePortal1 != m_bCanFirePortal1 || m_bOldCanFirePortal2 != m_bCanFirePortal2 )
 	{
-		DoEffect( m_EffectState );
+		CPortal_Player *pPlayer = ToPortalPlayer(GetOwner());
+		if ((pPlayer && FClassnameIs(pPlayer->GetActiveWeapon(), "weapon_portalgun")) || !pPlayer)
+		{	
+			DoEffect( m_EffectState );
+		}
 		m_nOldEffectState = m_EffectState;
 
 		m_bOldCanFirePortal1 = m_bCanFirePortal1;
@@ -817,8 +821,10 @@ void C_WeaponPortalgun::ClientThink( void )
 	}
 
 	// Update our effects
-	DoEffectIdle();
-
+	if ((pPlayer && FClassnameIs(pPlayer->GetActiveWeapon(), "weapon_portalgun")) || !pPlayer)
+	{
+		DoEffectIdle();
+	}
 	NetworkStateChanged();
 }
 
