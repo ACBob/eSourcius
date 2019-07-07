@@ -97,8 +97,6 @@ class CGlobalEvent;
 
 typedef CUtlVector< CBaseEntity* > EntityList_t;
 
-
-
 //
 // Structure passed to input handlers.
 //
