@@ -1,3 +1,5 @@
+dev/dev_testchamberlight	239 239 250 150
+
 lights/fluorescentcool001a	189 231 232 350
 lights/fluorescentcool001b	236 255 182 350
 lights/fluorescentcool002a	189 231 232 400
@@ -6,9 +8,14 @@ lights/fluorescentcool003a	189 231 232 300
 lights/fluorescentwarm001a	239 216 193 350
 lights/fluorescentwarm002a	239 216 193 400
 lights/fluorescentwhite001a	245 245 245 350
-lights/fluorescentwhite002a	245 245 245 400
+lights/fluorescentwhite002a	245 245 245 400 
 
+lights/light_recessedcool001	239 239 239 150
+lights/light_recessedcool002	149 180 200 350 149 180 200 200
+lights/light_green001		175 255 233 100
+lights/light_orange001		218 76	26  25 218 76	26  15	
 
+ 
 lights/hazzardred001a		228 37 0 300
 lights/hazzardyellow001a	250 215 74 300
 
@@ -16,12 +23,16 @@ lights/HIDcool001a		145 222 172 650
 lights/HIDcool001b		205 232 255 650
 lights/HIDwarm001a		255 201 116 650
 
-lights/white001			250 240 205 100
+lights/white001			250 240 205 100 250 240 205 100
 lights/white002			189 233 247 425
 lights/white003			232 246 190 350
 lights/white004			170 228 247 425
 lights/white005			234 235 220 375
 lights/white006			234 235 220 100
+lights/white007			250 240 205 40
+lights/white008			221 250 255 30 221 250 255 30
+lights/white009			183 204 218 50 183 204 218 50
+lights/white010		183 204 218 40
 
 lights/white001_nochop	250 240 205 100
 lights/white002_nochop	189 233 247 425
