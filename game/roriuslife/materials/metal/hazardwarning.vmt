@@ -1,7 +1,8 @@
 "LightmappedGeneric"
 {
 	"$basetexture" "metal/hazardwarning"
-	"$surfaceprop" "glassl"
+	"$surfaceprop" "glass"
+	"%noportal" "1"
 	"%keywords" "portal"
 
 
