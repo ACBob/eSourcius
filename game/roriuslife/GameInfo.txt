@@ -2,11 +2,12 @@
 {
 	game 		"Rorius Life"
 	title 		"Rorius Life"
-	type		singleplayer_only
 
-        "icon"		"icon"
+	Developer	"@ACBob#4705"
+
+        icon		"icon"
 	type		singleplayer_only
-	nodifficulty	1
+	HasPortals	1
 	nodegraph 0
 	SupportsDX8 0
 
