@@ -1,4 +1,4 @@
-//========= Copyright © 1996-2005, Valve Corporation, All rights reserved. ============//
+//========= Copyright ï¿½ 1996-2005, Valve Corporation, All rights reserved. ============//
 //
 // Purpose: 
 //
@@ -91,16 +91,20 @@ QAngle const& C_PortalGhostRenderable::GetRenderAngles( void )
 	return m_ReferencedReturns.qRenderAngle;
 }
 
-bool C_PortalGhostRenderable::SetupBones( matrix3x4_t *pBoneToWorldOut, int nMaxBones, int boneMask, float currentTime )
+bool C_PortalGhostRenderable::SetupBones( matrix3x4a_t *pBoneToWorldOut, int nMaxBones, int boneMask, float currentTime )
 {
 	if( m_pGhostedRenderable == NULL )
 		return false;
 
-	if( pBoneToWorldOut )
+	if( m_pGhostedRenderable->SetupBones( pBoneToWorldOut, nMaxBones, boneMask, currentTime ) && pBoneToWorldOut )
 	{
-		for( int i = 0; i != nMaxBones; ++i ) //FIXME: nMaxBones is most definitely greater than the actual number of bone transforms actually used, find the subset somehow
+		int nBoneCount = MIN( nMaxBones, GetModelPtr()->numbones() );
+		for( int i = 0; i != nBoneCount; ++i )
 		{
-			pBoneToWorldOut[i] = (m_matGhostTransform * pBoneToWorldOut[i]).As3x4();
+			matrix3x4a_t transform;
+			transform = m_matGhostTransform.As3x4();
+			//pBoneToWorldOut[i] = (m_matGhostTransform * pBoneToWorldOut[i]).As3x4();
+			ConcatTransforms_Aligned( transform, pBoneToWorldOut[i], pBoneToWorldOut[i] );
 		}
 	}
 
